@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>My_Paint Demo</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha256-9mbkOfVho3ZPXfM7W8sV2SndrGDuh7wuyLjtsWeTI1Q=" crossorigin="anonymous" />
+        <style>
+            body {
+                background-color: #121212;
+                padding-top: 3rem;
+            }
+            
+            #logo {
+                margin-bottom: 2rem;
+            }
+
+            #container {
+                background-color: rgba(255, 255, 255, 0.14);
+                padding: 0;
+                width: 60%;
+                height: 70%;
+                margin: auto;
+            }
+
+            .tekpaint-toolbar div.ui.buttons {
+                margin-right: 1rem;
+            }
+
+            .tekpaint-toolbar div.ui.buttons .button:first-child {
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-right: initial;
+            }
+            .tekpaint-toolbar div.ui.buttons .button {
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            .tekpaint-toolbar div.ui.buttons .button:last-child {
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-left: initial;
+            }
+
+            .tp-color-box {
+                padding: 15%;
+                margin-left: 1em;
+                width: 2em;
+                background-color: #000;
+                display: inline-block;
+                box-shadow:  0 0 3px  rgba(255, 255, 255, 0.4);
+                vertical-align: middle;
+            }
+
+            canvas {
+                background-image:
+                      linear-gradient(to right, rgba(4, 4, 4, 0.8), rgba(16, 16, 16, 0.8)),
+                      linear-gradient(to right, black 50%, white 50%),
+                      linear-gradient(to bottom, black 50%, white 50%);
+                background-blend-mode: normal, difference, normal;
+            background-size: 2em 2em;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="logo" style="text-align: center;">
+            <img src="https://i.imgur.com/8VnJSpJ.png">
+        </div>
+        <div id="container"></div>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+                integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+                crossorigin="anonymous">
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js" integrity="sha256-t8GepnyPmw9t+foMh3mKNvcorqNHamSKtKRxxpUEgFI=" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/7e7115b979.js" crossorigin="anonymous" async></script>
+        <script src="paint.jquery.js"></script>
+        <script src="app.js"></script>
+    </body>
+</html>
