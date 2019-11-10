@@ -1,0 +1,41 @@
+
+
+.tekpaint-toolbar div.ui.buttons {
+    margin-right: 1rem;
+}
+
+.tekpaint-toolbar div.ui.buttons .button:first-child {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-right: initial;
+}
+.tekpaint-toolbar div.ui.buttons .button {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.tekpaint-toolbar div.ui.buttons .button:last-child {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: initial;
+}
+
+#tekpaint-layerbar {
+    padding: 0.4rem !important;
+}
+
+.tp-color-box {
+    padding: 15%;
+    margin-left: 1em;
+    width: 2em;
+    background-color: #000;
+    display: inline-block;
+    box-shadow:  0 0 3px  rgba(255, 255, 255, 0.4);
+    vertical-align: middle;
+}
+
+.tekpaint-canvas {
+    background-image:
+            linear-gradient(to right, rgba(4, 4, 4, 0.8), rgba(16, 16, 16, 0.8)),
+            linear-gradient(to right, black 50%, white 50%),
+            linear-gradient(to bottom, black 50%, white 50%);
+    background-blend-mode: normal, difference, normal;
+    background-size: 2em 2em;
+}

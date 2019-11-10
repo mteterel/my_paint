@@ -124,7 +124,7 @@ class DrawingApp
         $('#tp-ctrl-openfile').change(function(e) {
             if (e.target.files.length <= 0)
                 return;
-                
+
             var reader = new Image();
             var inputField = $(this);
             reader.onload = function(e) {
