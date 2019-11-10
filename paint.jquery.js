@@ -3,6 +3,7 @@ class DrawingApp
     constructor(container)
     {
         this.initializeToolbar(container);
+        //this.initializeLayerBar(container);
         this.initializeCanvas(container);
         this.setupTools();
         $('.tp-pencil').click();
@@ -19,8 +20,9 @@ class DrawingApp
     {
         let outerContainer = $('<div class="ui attached inverted segment"></div>')
             .height('100%')
-            .css('padding', '1px')
-            .appendTo($(container));
+            .css('padding', '1px');
+        $('.tekpaint-toolbar').after(outerContainer);
+
         this.canvas = $('<canvas class="tekpaint-canvas"></canvas>')
             .width('100%')
             .height('100%')
@@ -33,6 +35,19 @@ class DrawingApp
         this.canvas = $(this.canvas);
         this.clearCanvas();
     }
+
+    /*initializeLayerBar(container)
+    {
+        let layerBar = $('<div id="tekpaint-layerbar" class="ui bottom attached inverted segment"></div>')
+            .appendTo($(container));
+        
+        //layerBar.append($('<span><i class="fas fa-layer-group"style="color: rgba(255, 255, 255, 0.5);"></i></span>'));
+        layerBar.append($('<a class="ui tiny black button"><i class="ui add icon"></i> Add Layer</a>'));
+        layerBar.append($('<a class="ui tiny black button"><i class="ui add icon"></i> Remove Layer</a>'));
+        layerBar.append($('<a class="ui tiny black button"><i class="fas fa-compress-arrows-alt"></i> Merge Layers</a>'));
+
+        layerBar.append($('<select id="tekpaint-layer-selector" class="ui simple black dropdown tiny button"><option value="0">Base Layer</option></select>'))
+    }*/
 
     initializeToolbar(container)
     {
@@ -50,7 +65,7 @@ class DrawingApp
 
         $('<div class="ui buttons">')
             .append($('<a class="ui black button tp-open"><i class="open folder icon"></i> Open</a>'))
-            .append($('<a class="ui black button tp-create"><i class="icons"><i class="file icon"></i><i class="add corner green icon"></i></i> New</a>'))
+            .append($('<a class="ui black button tp-create"><i class="file icon"></i> New</a>'))
             .append($('<a class="ui black button tp-save"><i class="save icon"></i> Save</a>'))
             .appendTo(toolbar);
 
@@ -104,6 +119,23 @@ class DrawingApp
             .click(function() {
                 $('#tp-ctrl-fillcolor').click();
         }));
+
+        toolbar.append($('<input id="tp-ctrl-openfile" type="file" accept="image/*" />').hide());
+        $('#tp-ctrl-openfile').change(function(e) {
+            if (e.target.files.length <= 0)
+                return;
+                
+            var reader = new Image();
+            var inputField = $(this);
+            reader.onload = function(e) {
+                self.clearCanvas();
+                let posX = Math.ceil((self.canvas[0].width / 2) - (reader.width / 2));
+                let posY = Math.ceil((self.canvas[0].height / 2) - (reader.height / 2));
+                self.renderContext.drawImage(reader, posX, posY);
+                inputField.val(null);
+            };
+            reader.src = URL.createObjectURL(e.target.files[0]);
+        });
     }
     
     registerDrawingTool(selector, events)
@@ -197,6 +229,10 @@ class DrawingApp
     {
         var self = this;
         
+        $('.tp-open').click(function() {
+            $('#tp-ctrl-openfile').trigger('click');
+        });
+
         $('.tp-create').click(function() {
             self.resetCanvas();
         });
